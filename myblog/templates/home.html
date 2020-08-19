@@ -5,22 +5,25 @@
 <div class="row">
 {% for post in object_list %}
 {% if forloop.first %}
-<div class="card mb-3 col-md-12">
-	{% if post.header_image %}
-	<a href="{% url 'article-details' post.pk %}">
-  <img src="{{post.header_image.url}}" style="height: 200px;width: 100%" class="card-img-top" alt="...">
-  </a>
-  {% endif %}
-  <div class="card-body">
+<div class="mb-3 row border-bottom">
+  <div class="card-body col-md-8">
     <h5 class="card-title"><a href="{% url 'article-details' post.pk %}"> {{post.title}}</a></h5>
+    <p><strong><mark class="text-danger">NEW</mark></strong></p>
     <p class="card-text">{{post.body|safe}}</p>
     <p class="card-text"><small class="text-muted">{{post.article_date}}</small></p>
     <a href="{% url 'article-details' post.pk %}" class="btn btn-outline-primary">Читать</a>
   </div>
+  <div class="col-md-4 align-self-center">
+	{% if post.header_image %}
+	<a href="{% url 'article-details' post.pk %}">
+  <img src="{{post.header_image.url}}" style="height: 200px;width: 100%" class="card-img-top mt-3" alt="...">
+  </a>
+  {% endif %}
+</div>
 </div> 
 {% else %}
 	
-  <div class="card col-md-3 mb-3">
+  <div class="col-md-3 mb-3">
   	{% if post.header_image %}
   	<a href="{% url 'article-details' post.pk %}">
     <img src="{{post.header_image.url}}" style="height: 200px;width: 250px" class="mt-2 card-img-top" alt="...">
