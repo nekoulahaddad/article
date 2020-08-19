@@ -10,7 +10,7 @@ class Post(models.Model):
 	#body = models.TextField()
 	header_image = models.ImageField(null=True,blank=True, upload_to="images/")
 	body = RichTextField(blank=True,null=True)
-	article_date = models.DateField(auto_now_add=True)
+	article_date = models.DateTimeField(auto_now_add=True,null=True,blank=True)
 
 	def __str__(self):
 		return self.title + '|' + str(self.author) #author is an object so i need to turn it to a string / this is how the information of the post is shown in the database --> exp:firstpost|nekoula
